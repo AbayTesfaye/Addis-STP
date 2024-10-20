@@ -1,0 +1,15 @@
+body {
+  background-color: #d4b800;
+  background-image: url("https://www.transparenttextures.com/patterns/football-no-lines.png");
+}
+
+.App {
+  position: fixed;
+  top: 20px;
+  bottom: 20px;
+  right: 30px;
+  left: 30px;
+  height: 100%;
+  border: 1px solid red;
+  margin: 10px;
+}
