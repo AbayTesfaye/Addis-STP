@@ -1,4 +1,6 @@
 import "./App.css";
+import React from "react";
+import Header from "./components/Header.jsx";
 
 function App() {
   const songs = [
@@ -12,25 +14,11 @@ function App() {
       artist: "Artist 2",
       albumArt: "url_to_album_art_2",
     },
-    // Add more songs here...
   ];
 
   return (
-    <div className="App flex flex-col min-h-screen bg-gray-100">
-      <header className="bg-gray-600 text-white p-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold">My Dynamic Song List</h1>
-        <div className="flex items-center space-x-2">
-          <input
-            type="text"
-            placeholder="Search for songs..."
-            className="p-2 rounded-md"
-          />
-          <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition">
-            Upload
-          </button>
-        </div>
-      </header>
-
+    <div className="App flex flex-col min-h-screen">
+      <Header />
       <main className="flex-grow p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {songs.map((song, index) => (
           <div
