@@ -3,7 +3,7 @@ import { useState } from "react";
 function Card() {
   const sampleSong = [
     {
-      title: "",
+      title: "Title song",
       artist: "Artist Name",
       albumArt: "logo192.png",
     },
@@ -18,13 +18,15 @@ function Card() {
       albumArt: "logo192.png",
     },
   ];
-
-  const [songs, setSongs] = useState([]);
-  function handleDelete() {}
+  const [songs, setSongs] = useState(sampleSong);
+  function handleDelete(id) {
+    const updatedSongs = songs.filter((song, index) => index !== id);
+    setSongs(updatedSongs);
+  }
   return (
     <div className="max-full rounded overflow-hidden shadow-lg bg-white p-4">
       {/* Loop through each song */}
-      {sampleSong.map((song, index) => {
+      {songs.map((song, index) => {
         return (
           <div
             key={index}
@@ -55,7 +57,7 @@ function Card() {
             {/* Delete Button */}
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              onClick={handleDelete}
+              onClick={() => handleDelete(index)}
             >
               Delete
             </button>
