@@ -1,28 +1,15 @@
 import { useState } from "react";
 
-function Card() {
-  const sampleSong = [
-    {
-      title: "Title song",
-      artist: "Artist Name",
-      albumArt: "logo192.png",
-    },
-    {
-      title: "Song Title",
-      artist: "Artist Name",
-      albumArt: "logo192.png",
-    },
-    {
-      title: "Song Title",
-      artist: "Artist Name",
-      albumArt: "logo192.png",
-    },
-  ];
-  const [songs, setSongs] = useState(sampleSong);
+function Card({ songs, setSongs }) {
   function handleDelete(id) {
     const updatedSongs = songs.filter((song, index) => index !== id);
     setSongs(updatedSongs);
   }
+
+  function handleEdit() {
+    console.log("handle Edit");
+  }
+
   return (
     <div className="max-full rounded overflow-hidden shadow-lg bg-white p-4">
       {/* Loop through each song */}
@@ -49,7 +36,7 @@ function Card() {
             {/* Edit Button */}
             <button
               className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mr-2"
-              onClick={() => console.log("Edit")}
+              onClick={handleEdit}
             >
               Edit
             </button>
