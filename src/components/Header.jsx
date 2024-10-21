@@ -21,21 +21,16 @@ function Header({ songs, setSongs }) {
   const handleAddSong = (e) => {
     e.preventDefault();
     if (newSong.title && newSong.artist && newSong.albumArt) {
-      setNewSong({ title: "", artist: "", albumArt: "" }); // Reset form
-      setSongs(newSong);
+      setSongs((prevSongs) => [...prevSongs, newSong]); // Correctly update songs array
+      setNewSong({ title: "", artist: "", albumArt: "" }); // Reset form fields
       setFormVisible(false); // Hide form after adding song
     }
   };
-  console.log(songs);
+
   return (
     <header className="bg-gray-600 text-white p-4 flex flex-col justify-between items-center">
       <h1 className="text-xl font-bold">Song List</h1>
       <div className="flex items-center space-x-2">
-        <input
-          type="text"
-          placeholder="Search for songs..."
-          className="p-2 rounded-xl text-black"
-        />
         <button
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
           onClick={toggleForm}
@@ -43,8 +38,6 @@ function Header({ songs, setSongs }) {
           {formVisible ? "Cancel" : "Add Song"}
         </button>
       </div>
-
-      {/* Form to add a new song */}
       {formVisible && (
         <form onSubmit={handleAddSong} className="mt-4 w-full">
           <div className="flex flex-col space-y-2">
@@ -76,7 +69,7 @@ function Header({ songs, setSongs }) {
               type="submit"
               className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition"
             >
-              Add Song
+              Save
             </button>
           </div>
         </form>
