@@ -1,47 +1,18 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header.jsx";
+import Card from "./components/Card.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
-  const songs = [
-    {
-      title: "Song 1",
-      artist: "Artist 1",
-      albumArt: "url_to_album_art_1",
-    },
-    {
-      title: "Song 2",
-      artist: "Artist 2",
-      albumArt: "url_to_album_art_2",
-    },
-  ];
+  const [songs, setSongs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className="App flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {songs.map((song, index) => (
-          <div
-            key={index}
-            className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-          >
-            <img
-              src={song.albumArt}
-              alt={`${song.title} album art`}
-              className="w-full h-32 object-cover rounded-md"
-            />
-            <h2 className="mt-2 text-lg font-semibold">{song.title}</h2>
-            <p className="text-gray-600">{song.artist}</p>
-            <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition">
-              Play
-            </button>
-          </div>
-        ))}
-      </main>
-
-      <footer className="bg-gray-600 text-white p-4 text-center">
-        © 2024 My Music App
-      </footer>
+      <Card />
+      <Footer />
     </div>
   );
 }
